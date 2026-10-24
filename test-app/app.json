@@ -1,0 +1,55 @@
+{
+  "expo": {
+    "name": "test",
+    "slug": "test-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "scheme": "testapp",
+    "newArchEnabled": true,
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow test to track location during employee shifts for your employer.",
+          "locationWhenInUsePermission": "Allow test to record shift start location and track travel during your shift.",
+          "isAndroidBackgroundLocationEnabled": false,
+          "isIosBackgroundLocationEnabled": false
+        }
+      ]
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.testapp.employee",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "test records your shift start location and tracks travel, dwell time, and elevation for your employer.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "test tracks location during active shifts for employer reporting."
+      }
+    },
+    "android": {
+      "package": "com.testapp.employee",
+      "adaptiveIcon": {
+        "backgroundColor": "#0F1C24",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "FOREGROUND_SERVICE"
+      ],
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
