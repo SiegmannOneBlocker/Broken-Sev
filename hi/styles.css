@@ -1,0 +1,91 @@
+:root {
+  --ink: #1a2e28;
+  --mist: #e8f2ee;
+  --leaf: #3d7a66;
+  --glow-a: #b8d4c8;
+  --glow-b: #7aa892;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: Manrope, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(120% 80% at 12% 18%, var(--glow-a) 0%, transparent 55%),
+    radial-gradient(90% 70% at 88% 78%, var(--glow-b) 0%, transparent 50%),
+    linear-gradient(165deg, #f3faf7 0%, #d5e8df 48%, #c2d9ce 100%);
+  background-attachment: fixed;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.stage {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  animation: wash-in 1.1s ease-out both;
+}
+
+.word {
+  font-family: Fraunces, Georgia, serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-size: clamp(6rem, 28vw, 14rem);
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  color: var(--ink);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+  animation:
+    rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both,
+    breathe 5.5s ease-in-out 1.2s infinite;
+}
+
+@keyframes wash-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.1rem) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    letter-spacing: -0.04em;
+  }
+  50% {
+    letter-spacing: -0.02em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage,
+  .word {
+    animation: none;
+  }
+}
